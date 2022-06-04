@@ -6,7 +6,7 @@
 function computerPlay()
 {
     const sign = ["Rock", "Paper", "Scissors"];
-    return sign[Math.floor(Math.random()*sign.length)];
+    return sign[Math.floor(Math.random()*sign.length)]; // use Math class to get a random element
 }
 
 /**
@@ -68,7 +68,7 @@ function playRound(playerSelection, computerSelection)
     }
     else
     {
-        return 'Invalid input, choose only between {"rock", "paper", "scissors"}';
+        return 'Invalid input, choose only between {"rock", "paper", "scissors"}'; // internal validation
     }
 }
 
@@ -81,15 +81,15 @@ function playRound(playerSelection, computerSelection)
  */
 function checkLargerScore(playerScore, computerScore) 
 {
-	if(playerScore > computerScore)
+	if(playerScore > computerScore) // if user has higher score than computer
   {
   	return "WIN";
   }
-  else if(playerScore < computerScore)
+  else if(playerScore < computerScore) // if computer has higher score than user
   {
   	return "LOST";
   }
-  else
+  else // if draw
   {
   	return "DRAWN";
   }
@@ -110,11 +110,11 @@ function checkPlayerSelection(playerSigns)
         let sign = playerSigns[i].toLowerCase().trim();
         if (sign == "rock" || sign == "paper" || sign == "scissors")
         {
-            return true; // normal
+            return true; // correct selection input
         }
         else
         {
-            return false;
+            return false; // wrong selection input
             break;
         }
     }
@@ -139,7 +139,7 @@ function game()
         {            
             // 0=draw, 1=win, 2=lose
             let score = playRound(playerSigns[i], computerPlay());
-            
+
             if (score == 1)
             {
                 playerScore = playerScore + 1; // score for player
