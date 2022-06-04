@@ -1,9 +1,21 @@
+/**
+ * To make a random computerised selection
+ * 
+ * @returns random selection from the constant array
+ */
 function computerPlay()
 {
     const sign = ["Rock", "Paper", "Scissors"];
     return sign[Math.floor(Math.random()*sign.length)];
 }
 
+/**
+ * To check who wins on current round
+ * 
+ * @param {*} playerSelection 
+ * @param {*} computerSelection 
+ * @returns 
+ */
 function playRound(playerSelection, computerSelection)
 {
     const player = playerSelection.toLowerCase().trim();
@@ -60,6 +72,13 @@ function playRound(playerSelection, computerSelection)
     }
 }
 
+/**
+ * To check who had higher score between the player and the computer
+ * 
+ * @param {*} playerScore 
+ * @param {*} computerScore 
+ * @returns 
+ */
 function checkLargerScore(playerScore, computerScore) 
 {
 	if(playerScore > computerScore)
@@ -76,6 +95,14 @@ function checkLargerScore(playerScore, computerScore)
   }
 }
 
+/**
+ * To validate the selection inputs from the user
+ * Compare each element of the 5 selections against
+ * the constans rock, paper, and scissors
+ * 
+ * @param {*} playerSigns 
+ * @returns boolean true=correct input, false=wrong input
+ */
 function checkPlayerSelection(playerSigns)
 {
     for (let i = 0; i < playerSigns.length; i++)
@@ -93,13 +120,17 @@ function checkPlayerSelection(playerSigns)
     }
 }
 
+/**
+ * To play the game 5 times
+ * The function ignores the draws
+ * 
+ * @returns messages with reult information
+ */
 function game()
 {
-    let sign = prompt("Please enter your name:");
-
+    let sign = prompt("Please replace each selection with either: rock, paper, scissors", "selection, selection, selection, selection, selection");
     let playerScore = 0;
     let computerScore = 0;
-    //const playerSigns = ["rock", "paper", "scissors", "paper"]; // <-- change user signs here 
     const playerSigns = sign.split(', ');
     let checkIfValidSelections = checkPlayerSelection(playerSigns);
     if (playerSigns.length == 5 && checkIfValidSelections == true)
@@ -111,20 +142,24 @@ function game()
 
             if (score == 1)
             {
-                playerScore = playerScore+1;
+                playerScore = playerScore+1; // score for player
             }
             else if (score == 2)
             {
-                computerScore = computerScore+1;
+                computerScore = computerScore+1; // score for computer
+            }
+            else
+            {
+                i--; // if draw ignore this loop
             }
         }
         return "You " + checkLargerScore(playerScore, computerScore) + " \nPlayer score: " + playerScore + ". \nComputer score: " + computerScore + ".";
     }
     else
     {
-        alert("wrong");
+        alert("Please replace each selection with either rock, paper, scissors"); // validation
+        return "Game over"
     }
-
 }
 
-console.log(game());
+alert(game()); // start game
