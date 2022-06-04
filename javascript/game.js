@@ -139,14 +139,14 @@ function game()
         {            
             // 0=draw, 1=win, 2=lose
             let score = playRound(playerSigns[i], computerPlay());
-
+            
             if (score == 1)
             {
-                playerScore = playerScore+1; // score for player
+                playerScore = playerScore + 1; // score for player
             }
             else if (score == 2)
             {
-                computerScore = computerScore+1; // score for computer
+                computerScore = computerScore + 1; // score for computer
             }
             else
             {
